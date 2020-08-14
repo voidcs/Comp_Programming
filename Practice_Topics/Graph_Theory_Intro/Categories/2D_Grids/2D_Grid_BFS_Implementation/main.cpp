@@ -6,7 +6,6 @@ using namespace std;
 //https://www.youtube.com/watch?v=M4xxztqh8rQ&list=PL2q4fbVm1Ik6DCzm9XZJbNwyHtHGclcEh&index=35
 
 int n, m;
-char a[1001][1001];
 bool vis[1001][1001];
 int dist[1001][1001];
 int dir[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
@@ -14,7 +13,7 @@ int dir[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 bool isValid(int x, int y){
     if(x < 1 || x > n || y < 1 || y > m)
         return false;
-    if(vis[x][y] || a[x][y] == '#')
+    if(vis[x][y])
         return false;
     
     return true;
