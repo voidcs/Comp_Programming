@@ -21,7 +21,7 @@ int main() {
             
             for(auto x: v)
                 cout<<x;
-
+            cout<<" ";
         }
         
         cout<<"00100000 ";
