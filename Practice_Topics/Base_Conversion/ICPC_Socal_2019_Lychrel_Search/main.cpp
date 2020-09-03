@@ -8,7 +8,7 @@ typedef long long ll;
 bool isPalin(vector<ll>);
 
 int main(){
-    
+    //freopen("output.txt", "w", stdout);
     ll base, x;
     while(cin>>base>>x){
         vector<ll> v;
@@ -17,9 +17,7 @@ int main(){
             x /= base;
         }
 
-        for(auto x: v)
-            cout<<x<<" ";
-        cout<<endl;
+        reverse(v.begin(), v.end());
         
         ll ans = 0;
         while(!isPalin(v)){
