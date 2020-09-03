@@ -65,16 +65,12 @@ int main() {
     vector<ll> ans;
     int carry = 0;
     for(int i = 0; i < m; i++){
-        int x = n1[i];
-        int y = n2[i];
-        
-        int add = x + y + carry;
-        
+        int add = n1[i] + n2[i] + carry;
+        carry = 0;
         if(add >= base){
-            add -= base;
-            carry = add%base;
+            carry = add/base;
+            add %= base;
         }
-        
         ans.push_back(add);
     }
     
@@ -90,6 +86,8 @@ int main() {
         if(carry)
             carry = 0;
     }
+    if(carry)
+        ans.push_back(1);
     
     cout<<"ANS: ";
     reverse(ans.begin(), ans.end());
@@ -100,7 +98,7 @@ int main() {
             x -= 10;
         }
         start += x;
-        cout<<start;
+        cout<<start<<" ";
     }
     
     return 0;
