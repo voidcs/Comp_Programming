@@ -1,20 +1,37 @@
 #include <bits/stdc++.h>
-typedef long long ll;
 using namespace std;
+typedef long long ll;
 
 int main(){
-	int t;
-	cin>>t;
-	while(t--){
-	    int n;
-	    cin>>n;
-	    ll a[n];
-	    for(int i = 0; i < n; i++)
-	        cin>>a[i];
-	    sort(a, a + n);
-	    for(int i = 0; i < n; i++)
-	        cout<<a[i]<<" ";
-	    cout<<endl;
-	}
-	return 0;
+    
+    ll x;
+    ll base;
+    cout<<"Enter the base 10 number to be converted\n";
+    cin>>x;
+
+    
+    cout<<"Enter the base to convert to\n";
+    cin>>base;
+    
+    vector<char> v;
+    
+    cout<<x<<" in base: "<<base<<" is: ";
+    while(x){
+        ll add = 0;
+        char start = '0';
+        
+        int r = x%base;
+        if(r > 9){
+            start = 'A';
+            r -= 10;
+        }
+        v.push_back(start + r);
+        x /= base;
+    }
+    
+    reverse(v.begin(), v.end());
+    for(auto x: v)
+        cout<<x;
+
+  return 0;
 }
