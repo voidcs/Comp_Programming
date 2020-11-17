@@ -1,8 +1,8 @@
-#include<bits/stdc++.h>
-typedef long long ll;
+#include <bits/stdc++.h>
 using namespace std;
+typedef long long ll;
 const ll mod = 1e9 + 7;
- 
+
 int main(){
     ll n, m;
     cin>>n>>m;
@@ -13,6 +13,7 @@ int main(){
     }
     
     vector<vector<ll>> dp(n, vector<ll>(m, 0));
+    
     for(int i = 0; i < n; i++){
         if(i){
             for(int j = 0; j < m; j++){
@@ -28,6 +29,7 @@ int main(){
             for(int j = 0; j < m; j++)
                 dp[0][j] = 1;
         }
+        
         if(~a[i]){
             for(int j = 0; j < m; j++){
                 if(j != a[i])
@@ -35,11 +37,11 @@ int main(){
             }
         }
     }
+    
     ll ans = 0;
     for(int i = 0; i < m; i++)
         ans += dp[n-1][i];
     
     cout<<ans%mod<<endl;
-    
     return 0;
 }
