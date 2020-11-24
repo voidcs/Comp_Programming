@@ -10,7 +10,6 @@ int main(){
     cin>>n>>m;
     vector<vector<char>> a(n, vector<char>(m));
     vector<vector<int>> dx(n, vector<int>(m, -1));
-    vector<vector<int>> vis(n, vector<int>(m, 0));
     int startX, startY, endX, endY;
     
     for(int i = 0; i < n; i++){
@@ -32,16 +31,13 @@ int main(){
     bool flag = 0;
     while(!q.empty()){
         int x = q.front()[0], y = q.front()[1];
-        vis[x][y] = 1;
         q.pop();
         for(int i = 0; i < 4; i++){
             int newX = x + dir[i][0];
             int newY = y + dir[i][1];
-            if(valid(newX, newY) && !vis[newX][newY]){
-                vis[newX][newY] = 1;
+            if(valid(newX, newY)){
                 q.push({newX, newY});
-                //Can also block the cell off
-                //a[newX][newY] = '#';
+                a[newX][newY] = '#';
                 dx[newX][newY] = i;
             }
         }
