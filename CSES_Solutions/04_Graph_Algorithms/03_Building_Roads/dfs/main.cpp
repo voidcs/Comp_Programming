@@ -22,17 +22,17 @@ int main(){
         }
     };
 
-    vector<array<ll, 2>> pairs;
+    vector<array<ll, 2>> ans;
     dfs(1);
     for(int i = 2; i <= n; i++){
         if(!vis[i]){
             dfs(i);
-            pairs.push_back({1, i});
+            ans.push_back({1, i});
         }
     }
     
-    cout<<pairs.size()<<endl;
-    for(auto x: pairs)
+    cout<<ans.size()<<endl;
+    for(auto x: ans)
         cout<<x[0]<<" "<<x[1]<<endl;
     
     return 0;
