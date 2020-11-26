@@ -3,8 +3,10 @@ using namespace std;
 typedef long long ll;
 const ll INF = 1e18;
 
+//Basically dijkstra's algorithm
+
 int main(){
-    //freopen("input.txt", "r", stdin);
+    //freopen("input2.txt", "r", stdin);
     ll n, m;
     cin>>n>>m;
     vector<vector<array<ll, 2>>> adj(n+1);
@@ -23,8 +25,11 @@ int main(){
         ll cost = pq.top()[0];
         ll u = pq.top()[1];
         pq.pop();
+        //Necessary so you don't have to check all the children if 
+        //this node cannot minimize the cost
         if(cost > dist[u])
             continue;
+        
         for(array<ll, 2> a: adj[u]){
             int cost_child = a[0];
             int child = a[1];
