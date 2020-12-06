@@ -4,43 +4,57 @@ class Solution {
     //https://leetcode.com/problems/pacific-atlantic-water-flow/
 public:
     vector<vector<int>> pacificAtlantic(vector<vector<int>>& matrix) {
-        int n = matrix.size();
-        int m = matrix[0].size();
         vector<vector<int>> ans;
+        int m = matrix.size();
+        if(!m)
+            return ans;
+        int n = matrix[0].size();
+        if(!n)
+            return ans;
         
         array<int, 2> dir[4] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
         
         function<bool(int, int)> valid = [&](int x, int y){
-            return(x >= 0 && y >= 0 && x < n && y < m);
+            return(x >= 0 && y >= 0 && x < m && y < n);
         };
         
-        vector<vector<int>> vis(n, vector<int>(m, 0));
+        vector<vector<int>> visPacific(m, vector<int>(n, 0));
+        vector<vector<int>> visAtlantic(m, vector<int>(n, 0));
         
-        bool p = 0, c = 0;
-        function<void(int, int)> dfs = [&](int x, int y){
-            vis[x][y] = 1;
+        function<void(int, int, int)> dfs = [&](int x, int y, int ocean){
+            if(ocean)
+                visPacific[x][y] = 1;
+            else
+                visAtlantic[x][y] = 1;
             for(int i = 0; i < 4; i++){
                 int newX = x + dir[i][0];
                 int newY = y + dir[i][1];
-                if(newX == -1 || newY == -1)
-                    p = 1;
-                if(newX == m || newY == n)
-                    c = 1;
-                if(valid(newX, newY) && !vis[newX][newY] && matrix[newX][newY] <= matrix[x][y]){
-                    vis[newX][newY] = 1;
-                    dfs(newX, newY);
+                if(ocean){
+                    if(valid(newX, newY) && !visPacific[newX][newY] && matrix[newX][newY] >= matrix[x][y]){
+                            visPacific[newX][newY] = 1;
+                            dfs(newX, newY, ocean);
+                    }
                 }
+                else{
+                    if(valid(newX, newY) && !visAtlantic[newX][newY] && matrix[newX][newY] >= matrix[x][y]){
+                            visAtlantic[newX][newY] = 1;
+                            dfs(newX, newY, ocean);
+                    }
+                }
+                
             }
         };
-        
+        for(int i = 0; i < m; i++){
+            dfs(i, 0, 1);
+            dfs(i, n-1, 0);
+        }
         for(int i = 0; i < n; i++){
-            for(int j = 0; j < m; j++){
-                for(int k = 0; k < n; k++)
-                    for(int l = 0; l < m; l++)
-                        vis[k][l] = 0;
-                p = 0, c = 0;
-                dfs(i, j);
-                if(p == 1 && c == 1)
+            dfs(0, i, 1);
+            dfs(m-1, i, 0);
+        }
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                if(visPacific[i][j] && visAtlantic[i][j])
                     ans.push_back({i, j});
             }
         }
