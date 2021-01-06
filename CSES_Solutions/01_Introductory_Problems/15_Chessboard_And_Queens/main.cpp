@@ -17,7 +17,7 @@ int main(){
         bool ok = 1;
         for(int i = 0; i < 8; i++)
             ok &= a[i][p[i]] == '.';
-        vector<bool> b(8, 0);
+        vector<bool> b(16, 0);
         for(int i = 0; i < 8; i++){
             if(b[i+p[i]])
                 ok = 0;
@@ -32,5 +32,6 @@ int main(){
         ans += ok;
     }while(next_permutation(p.begin(), p.end()));
     cout<<ans<<endl;
+    
     return 0;
 }
