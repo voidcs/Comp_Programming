@@ -12,8 +12,8 @@ void sieve(){
             lpf[i] = i;
             primes.push_back(i);
         }
-        
-        for(int j = 0; j < primes.size() && primes[j] <= lpf[i] && primes[j]*i < maxN; j++)
+        //add && primes[j] <= lpf[i] to not recalculate the same factors of primes
+        for(int j = 0; j < primes.size() && primes[j]*i < maxN; j++)
             lpf[i*primes[j]] = primes[j];
     }
 }
@@ -31,8 +31,6 @@ int main(){
             n /= lpf[n];
         }
         
-//        for(auto x: m)
-//            cout<<x.first<<"   "<<x.second<<endl;
         ll ans = 1;
         for(auto x: m)
             ans *= (x.second + 1);

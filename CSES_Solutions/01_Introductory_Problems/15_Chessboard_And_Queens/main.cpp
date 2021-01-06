@@ -18,12 +18,14 @@ int main(){
         for(int i = 0; i < 8; i++)
             ok &= a[i][p[i]] == '.';
         vector<bool> b(16, 0);
+        //Check diagonal from bottom left to top right
         for(int i = 0; i < 8; i++){
             if(b[i+p[i]])
                 ok = 0;
             b[i+p[i]] = 1;
         }
-        b = vector<bool>(8, 0);
+        b = vector<bool>(16, 0);
+        //Check diagonal from top left to bottom right
         for(int i = 0; i < 8; i++){
             if(b[i+7-p[i]])
                 ok = 0;
