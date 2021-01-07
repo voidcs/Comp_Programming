@@ -9,11 +9,10 @@ int main() {
     vector<int> v;
     function<void(int)> solve = [&](int x){
         if(!x){
-            for(int c: v){
+            for(int c: v)
                 cout<<c;
-            }
             cout<<endl;
-            return 0;
+            return;
         }
         solve(x-1);
         if(v[x-1])
@@ -21,11 +20,11 @@ int main() {
         else
             v[x-1] = 1;
         solve(x-1);
+        return;
     };
     
-    for(int i = 0; i < n; i++){
+    for(int i = 0; i < n; i++)
         v.push_back(0);
-    }
     solve(n);
     
     return 0;
