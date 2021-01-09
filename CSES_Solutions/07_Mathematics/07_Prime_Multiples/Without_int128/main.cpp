@@ -11,10 +11,6 @@ int main(){
     for(int i = 0; i < k; i++){
         cin>>a[i];
     }
-    long long ans = 0;
-    for(int i = 0; i < k; i++){
-        ans += n/a[i];
-    }
 
     ll sum = 0;
     for(int i = 0; i < (1<<k); i++){
@@ -30,7 +26,7 @@ int main(){
             sum -= temp;
         else
             sum += temp;
-        }
+    }
 
     cout<<n - sum<<endl;
     return 0; 
