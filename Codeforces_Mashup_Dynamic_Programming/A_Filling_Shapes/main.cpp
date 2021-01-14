@@ -2,6 +2,9 @@
 using namespace std;
 typedef long long ll;
 
+//PROBLEM LINK
+//https://codeforces.com/gym/302977/problem/A
+
 int main(){
     int n;
     cin>>n;
