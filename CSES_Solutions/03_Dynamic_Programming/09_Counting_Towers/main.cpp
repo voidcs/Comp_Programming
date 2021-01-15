@@ -8,8 +8,8 @@ int main(){
     ll n = 1e6+5;
     vector<vector<ll>> dp(n+1, vector<ll>(3, 0));
     dp[1][1] = dp[1][2] = 1;
-    //dp[i][0] represents ways with last being two width 1 blocks
-    //dp[i][1] represents ways with last block being a width 2 block
+    //dp[i][1] represents ways with last being two width 1 blocks
+    //dp[i][2] represents ways with last block being a width 2 block
     for(int i = 1; i < n; i++){
         //Place stuff on top of a width 2 block
         ll op1 = (dp[i][1] + dp[i][2]) % mod;
