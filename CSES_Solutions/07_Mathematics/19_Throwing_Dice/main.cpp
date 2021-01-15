@@ -15,8 +15,6 @@ int main(){
         v[5][i] = 1;
     function<mat(mat, mat)>  mult = [&](mat a, mat b){
         mat res(6, vector<ll>(6, 0));
-        for(int i = 0; i < 6; i++)
-            res[i][i] = 1;
         
         for(int i = 0; i < 6; i++){
             for(int j = 0; j < 6; j++){
