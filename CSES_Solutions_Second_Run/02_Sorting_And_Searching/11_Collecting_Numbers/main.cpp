@@ -1,29 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
+const ll mod = 1e9+7;
 const ll INF = 1e18;
- 
+
 int main(){
     ll n;
     cin>>n;
     ll a[n];
+    for(int i = 0; i < n; i++)
+        cin>>a[i];
     map<ll, ll> m;
     for(int i = 0; i < n; i++){
-        cin>>a[i];
         m[a[i]] = i;
     }
-    ll last = -1, ans = 0;
-    for(int i = 1; i <= n; i++){
-        while(i <= n){
-            if(m[i] < last){
-                i--;
-                break;
-            }
-            last = m[i];
+    int index = -1, ans = 0;
+    for(int i = 1; i <= n;){
+        while(i <= n && m[i] > index){
+            index = m[i];
             i++;
         }
-        last = -1;
-        ans++;
+        ans++, index = -1;
     }
     cout<<ans<<endl;
     
