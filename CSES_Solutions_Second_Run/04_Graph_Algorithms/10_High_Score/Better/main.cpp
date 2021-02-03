@@ -30,18 +30,6 @@ int main(){
         adj[a].push_back({c, b});
     }
     vector<ll> vis(n+1, 0);
-    function<void(ll)> dfs = [&](ll u){
-        vis[u] = 1;
-        for(array<ll, 2> a: adj[u]){
-            ll c = a[1];
-            if(!vis[c]){
-                vis[c] = 1;
-                dfs(c);
-            }
-        }
-    };
-    dfs(1);
-    
     vector<ll> dist(n+1, -INF);
     dist[1] = 0;
     
