@@ -46,8 +46,6 @@ int main(){
             for(array<ll, 2> a: adj[j]){
                 ll cost = a[0];
                 ll u = a[1];
-                if(dist[u] == INF)
-                    continue;
                 if(dist[j] + cost > dist[u]){
                     dist[u] = dist[j] + cost;
                     if(i >= n && vis[u]){
