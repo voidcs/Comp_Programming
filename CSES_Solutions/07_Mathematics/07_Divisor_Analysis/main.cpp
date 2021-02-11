@@ -36,6 +36,7 @@ int main(){
         divisors = ((divisors%mod) * ((b+1)%mod)) % mod;
         
         //For product
+		//https://www.geeksforgeeks.org/product-of-divisors-of-a-number-from-a-given-list-of-its-prime-factors/
         ll val = expo(a, (b*(b+1))/2, mod);
         product = expo(product, b+1, mod) * expo(val, count, mod);
         product %= mod;
