@@ -4,6 +4,7 @@ typedef long long ll;
 const ll INF = 1e18;
 const ll mod = 1e9+7;
 
+//Note that this solution can create wrong answers due to collision
 //PROBLEM LINK
 //https://www.spoj.com/problems/NHAY/
 //REFERENCE
