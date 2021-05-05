@@ -13,7 +13,6 @@ int main(){
     cin >> w.x1 >> w.y1 >> w.x2 >> w.y2;
     cin >> a.x1 >> a.y1 >> a.x2 >> a.y2;
     cin >> b.x1 >> b.y1 >> b.x2 >> b.y2;
-    int ans = (a.x2 - a.x1) * (a.y2 - a.y1);
     
     auto coveredCorner = [&](int x, int y, rect a){
         return x >= a.x1 && x <= a.x2 && y >= a.y1 && y <= a.y2;
