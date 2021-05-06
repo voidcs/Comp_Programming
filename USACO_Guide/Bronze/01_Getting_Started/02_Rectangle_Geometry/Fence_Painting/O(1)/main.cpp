@@ -11,7 +11,7 @@ int main(){
     cin>>a>>b>>c>>d;
 	//Add the total length from right most point to left most point
     int ans = max(d, b) - min(a, c);
-	//Subtract intersection
+	//Subtract gap inbetween the two
     ans -= max(0, max(a, c) - min(d, b));
     cout<<ans<<endl;
     return 0;
