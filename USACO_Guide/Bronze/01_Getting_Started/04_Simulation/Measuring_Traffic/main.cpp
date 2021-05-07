@@ -4,53 +4,41 @@ typedef long long ll;
 const ll mod = 1e9+7;
 const ll INF = 1e18;
 
-struct dir{
-    string type;
-    int l, r;
-};
-
 int main(){
     freopen("traffic.in", "r", stdin);
     freopen("traffic.out", "w", stdout);
     int n;
     cin>>n;
-    dir a[n];
-    for(int i = 0; i < n; i++){
-        cin>>a[i].type>>a[i].l>>a[i].r;
-    }
-    int l = -1e9, r = 1e9;
-    for(int i = n-1; i >= 0; i--){
-        if(a[i].type == "none"){
-            l = max(l, a[i].l), r = min(r, a[i].r);
-        }
-        else if(a[i].type == "on"){
-            l -= a[i].r;
-            r -= a[i].l;
+    vector<string> type(n);
+    vector<array<int, 2>> v(n);
+    for(int i = 0; i < n; i++)
+        cin>>type[i]>>v[i][0]>>v[i][1];
+    int l = 0, r = 1e9;
+    for(int i = n-1; ~i; i--){
+        if(type[i] == "on"){
+            l -= v[i][1];
+            r -= v[i][0];
             l = max(l, 0);
         }
-        else if(a[i].type == "off"){
-            l += a[i].l;
-            r += a[i].r;
-        }
+        if(type[i] == "none")
+            l = max(l, v[i][0]), r = min(r, v[i][1]);
+        if(type[i] == "off")
+            l += v[i][0], r += v[i][1];
     }
     cout<<l<<" "<<r<<endl;
     
-    l = -1e9, r = 1e9;
+    l = 0, r = 1e9;
     for(int i = 0; i < n; i++){
-        if(a[i].type == "none"){
-            l = max(l, a[i].l), r = min(r, a[i].r);
-        }
-        else if(a[i].type == "on"){
-            l += a[i].l;
-            r += a[i].r;
-        }
-        else if(a[i].type == "off"){
-            l -= a[i].r;
-            r -= a[i].l;
+        if(type[i] == "on")
+            l += v[i][0], r += v[i][1];
+        if(type[i] == "none")
+            l = max(l, v[i][0]), r = min(r, v[i][1]);
+        if(type[i] == "off"){
+            l -= v[i][1];
+            r -= v[i][0];
             l = max(l, 0);
         }
     }
     cout<<l<<" "<<r<<endl;
-    
     return 0;
 }
