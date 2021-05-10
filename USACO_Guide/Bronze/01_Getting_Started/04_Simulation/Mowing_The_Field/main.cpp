@@ -33,7 +33,7 @@ int main(){
         }
     }
     if(ans == 1e9)
-        cout<<"-1\n";
+		cout<<"-1\n";
     else
         cout<<ans<<endl;
     return 0;
