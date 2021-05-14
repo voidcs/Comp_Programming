@@ -47,18 +47,6 @@ int main(){
         return l + r;
     };
     
-    function<void(int, int, int, int, int)> update = [&](int i, int sl, int sr, int index, int x){
-        if(sl == sr){
-            tree[i] = x;
-            return;
-        }
-        int mid = (sl + sr) / 2;
-        if(index <= mid)
-            update(2*i+1, sl, mid, index, x);
-        else
-            update(2*i+2, mid+1, sr, index, x);
-        tree[i] = tree[2*i+1] + tree[2*i+2];
-    };
     build(0, 0, 1001); 
     int ans = 0;
     for(int i = 0; i < n; i++){
