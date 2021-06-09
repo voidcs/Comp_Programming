@@ -5,8 +5,6 @@ const ll mod = 1e9+7;
 const ll INF = 1e18;
 
 int main(){
-    freopen("input.txt", "r", stdin);
-    //freopen("whereami.out", "w", stdout);
     int n;
     cin>>n;
     map<string, int> year;
@@ -20,6 +18,13 @@ int main(){
         string a, b, time, type, t;
         cin>>a>>t>>t>>time>>type>>t>>t>>b;
         m[a] = {m[b].first, type};
+        if(type == m[b].second){
+            if(time == "previous")
+                m[a].first -= 12;
+            else
+                m[a].first += 12;
+            continue;
+        }
         int j = year[m[b].second];
         if(time == "previous"){
             while(names[j] != type){
@@ -40,8 +45,6 @@ int main(){
             }
         }
     }
-//    for(auto x: m)
-//        cout<<x.first<<" "<<x.second.first<<" "<<x.second.second<<endl;
     cout<<abs(m["Bessie"].first - m["Elsie"].first)<<endl;
     
     return 0;
