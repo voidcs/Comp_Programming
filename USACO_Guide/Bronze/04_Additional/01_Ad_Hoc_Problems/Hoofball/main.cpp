@@ -51,6 +51,7 @@ int main(){
     sort(range.begin(), range.end(), comp);
     int ans = 0;
     int start = -1, end = -1;
+	//Remove all of the segments that lie completely within another one (not necessary to pass a ball to this cow)
     for(int i = 0; i < n; i++){
         if(range[i][0] >= start && range[i][1] <= end){
             continue;
