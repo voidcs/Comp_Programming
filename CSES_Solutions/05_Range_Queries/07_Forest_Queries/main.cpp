@@ -1,33 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-const ll mod = 1e9+7;
 const ll INF = 1e18;
-
+const ll mod = 1e9+7;
+ 
 int main(){
-    //freopen("input.txt", "r", stdin);
-    int n, q;
-    cin>>n>>q;
-    vector<vector<int>> pref(n+1, vector<int>(n+1));
-    vector<vector<char>> g(n+1, vector<char>(n+1));
-    for(int i = 1; i <= n; i++)
-        for(int j = 1; j <= n; j++)
-            cin>>g[i][j];
-    for(int i = 1; i <= n; i++){
-        int cnt = 0;
-        for(int j = 1; j <= n; j++){
-            if(g[i][j] == '*')
-                cnt++;
-            pref[i][j] = cnt + pref[i-1][j];
+    int n, m;
+    cin>>n>>m;
+    vector<vector<int>> p(n+1, vector<int>(n+1));
+    for(int i = 0; i < n; i++){
+        int sum = 0;
+        for(int j = 0; j < n; j++){
+            char c;
+            cin>>c;
+            if(c == '*')
+                sum++;
+            p[i+1][j+1] = sum + p[i][j+1];
         }
     }
-    while(q--){
+    while(m--){
         int y1, x1, y2, x2;
         cin>>y1>>x1>>y2>>x2;
-        int ans = pref[y2][x2] + pref[y1-1][x1-1];
-        ans -= pref[y1-1][x2] + pref[y2][x1-1];
-        cout<<ans<<endl;
+        cout<<p[y2][x2] - p[y2][x1-1] - p[y1-1][x2] + p[y1-1][x1-1]<<endl;
     }
-    
     return 0;
 }
