@@ -22,7 +22,6 @@ void dfs(int node, int lvl, int par){
 
 void init(int n){
     dfs(1, 0, -1);
-    
     for(int i = 1; i <= maxN; i++){
         for(int j = 1; j <= n; j++){
             if(LCA[j][i-1] != -1){
@@ -36,13 +35,10 @@ void init(int n){
 int getLCA(int a, int b){
     if(level[b] < level[a])
         swap(a, b);
-    
     int d = level[b] - level[a];
-    
     while(d){
         int i = log2(d);
         b = LCA[b][i];
-        
         d -= 1 << i;
     }
     
