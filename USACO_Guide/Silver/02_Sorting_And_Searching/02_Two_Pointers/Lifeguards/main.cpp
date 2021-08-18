@@ -32,6 +32,7 @@ int main(){
             working.erase(x[1]);
         prevTime = currTime;
     }
+	
     ll minAlone = INF;
     for(int i = 0; i < n; i++)
         minAlone = min(minAlone, alone[i]);
