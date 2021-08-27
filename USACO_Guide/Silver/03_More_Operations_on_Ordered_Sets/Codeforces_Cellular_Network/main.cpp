@@ -28,6 +28,7 @@ int main(){
         }
         ans = max(ans, dist);
     }
+	
     cout<<ans<<endl;
     return 0;
 }
