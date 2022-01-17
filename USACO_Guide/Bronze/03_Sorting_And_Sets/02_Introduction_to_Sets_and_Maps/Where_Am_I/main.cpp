@@ -10,7 +10,7 @@ int main(){
     int n;
     string s;
     cin>>n>>s;
-    for(int i = 2; i < n; i++){
+    for(int i = 1; i < n; i++){
         bool valid = 1;
         set<string> have;
         for(int j = 0; j < n-i+1; j++){
