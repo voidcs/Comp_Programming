@@ -43,6 +43,5 @@ int main(){
         ans -= h * w;
         cout<<ans<<endl;
     }
-    
     return 0;
 }
