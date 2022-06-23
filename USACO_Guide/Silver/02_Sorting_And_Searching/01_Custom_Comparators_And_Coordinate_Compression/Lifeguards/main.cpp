@@ -8,7 +8,7 @@ int main(){
     freopen("lifeguards.in", "r", stdin);
     freopen("lifeguards.out", "w", stdout);
     ll n;
-    cin>>n; 
+    cin>>n;
     vector<array<ll, 3>> v;
     vector<ll> alone(n);
     for(int i = 0; i < n; i++){
